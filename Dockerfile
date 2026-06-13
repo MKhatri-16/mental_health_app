@@ -24,6 +24,7 @@ RUN flutter build web --release
 # Serve with lightweight Nginx
 FROM nginx:alpine
 COPY --from=build /app/build/web /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/templates/default.conf.template
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Railway dynamically assigns $PORT. The official nginx image automatically replaces ${PORT} in the template.
+# Tell Railway to route traffic to 8080
+EXPOSE 8080
