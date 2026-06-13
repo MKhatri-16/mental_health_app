@@ -1,4 +1,5 @@
-FROM ghcr.io/cirruslabs/flutter:stable AS build
+# Force exact Flutter SDK version matching local to avoid dependency solving issues
+FROM ghcr.io/cirruslabs/flutter:3.32.2 AS build
 
 WORKDIR /app
 COPY . .
@@ -16,7 +17,7 @@ RUN echo "HF_TOKEN=$HF_TOKEN" >> .env
 RUN echo "GROQ_API_KEY=$GROQ_API_KEY" >> .env
 
 # Fetch dependencies and build the web app
-RUN flutter pub get
+RUN rm -f pubspec.lock && flutter pub get
 RUN flutter pub run build_runner build --delete-conflicting-outputs
 RUN flutter build web --release
 
