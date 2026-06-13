@@ -24,7 +24,6 @@ RUN flutter build web --release
 # Serve with lightweight Nginx
 FROM nginx:alpine
 COPY --from=build /app/build/web /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/templates/default.conf.template
 
-# Railway provides $PORT at runtime. Inject it into nginx config and start the server.
-CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'
+# Railway dynamically assigns $PORT. The official nginx image automatically replaces ${PORT} in the template.
