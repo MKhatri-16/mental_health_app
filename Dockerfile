@@ -1,11 +1,9 @@
 FROM ghcr.io/cirruslabs/flutter:stable AS build
 
 WORKDIR /app
-# Use root to copy files and fix permissions if needed, but cirruslabs/flutter runs as 'cirrus' user.
-# So we must copy the files and give ownership to the 'cirrus' user to allow flutter pub get to write.
-USER root
-COPY --chown=cirrus:cirrus . .
-USER cirrus
+COPY . .
+# Fix potential git dubious ownership errors inside Docker
+RUN git config --global --add safe.directory '*'
 
 # Accept build arguments from Railway
 ARG GEMINI_API_KEY
