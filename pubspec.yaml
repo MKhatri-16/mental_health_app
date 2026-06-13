@@ -1,0 +1,39 @@
+name: mental_health_app
+description: "MindGuard AI - Hyper-personalized mental wellness for NEET/JEE students (Web Only)"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  google_fonts: ^6.2.1
+  fl_chart: ^0.70.0
+  crypto: ^3.0.3
+  shared_preferences: ^2.3.5
+  lucide_icons: ^0.257.0
+  riverpod: ^2.4.0
+  flutter_riverpod: ^2.4.9
+  envied: ^0.5.0
+  dio: ^5.4.0
+  sqflite_sqlcipher: ^3.3.0
+  flutter_secure_storage: ^9.0.0 # using a modern version to ensure compilation with Flutter 3.32.2
+  local_auth: ^2.1.0
+  encrypt: ^5.0.0
+  http_certificate_pinning: ^2.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  riverpod_generator: ^2.4.0
+  build_runner: ^2.4.0
+  test: ^1.24.0
+  mockito: ^5.4.0
+  envied_generator: ^0.5.0 # Required to generate envied bindings
+
+flutter:
+  uses-material-design: true
